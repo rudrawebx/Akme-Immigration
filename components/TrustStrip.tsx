@@ -58,7 +58,7 @@ export default function TrustStrip() {
           </div>
           <div className="flex items-center gap-2 text-slate-600">
             <MapPin className="w-4 h-4 text-brand-red flex-shrink-0" />
-            <span className="font-semibold text-slate-800">Visit Us: Opposite Punjabi University, Patiala</span>
+            <span className="font-semibold text-slate-800">Visit Us: SCO 31, Opp. Punjabi University, Patiala</span>
           </div>
         </div>
 

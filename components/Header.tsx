@@ -69,7 +69,7 @@ export default function Header() {
             </span>
             <span className="text-slate-900 font-semibold flex items-center gap-1">
               <MapPin className="w-3.5 h-3.5 text-brand-red flex-shrink-0" />
-              Opposite Punjabi University, Patiala
+              SCO 31, Opp. Punjabi University, Patiala
             </span>
             <span className="hidden lg:inline text-slate-400">|</span>
             <span className="hidden lg:inline text-slate-600">
