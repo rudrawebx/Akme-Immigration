@@ -426,7 +426,7 @@ export default function Header() {
             <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
             <div>
               <strong className="block text-slate-900">New Centre in Patiala:</strong>
-              <span>Opposite Punjabi University, Patiala</span>
+              <span>SCO 31, Opp. Punjab &amp; Sind Bank, Walia Enclave, Opp. Punjabi University, Patiala</span>
             </div>
           </div>
 

@@ -95,7 +95,7 @@ const localBusinessSchema = {
   email: SITE_CONFIG.email,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Opposite Punjabi University',
+    streetAddress: 'SCO 31, Opposite Punjab & Sind Bank, Walia Enclave, Opposite Punjabi University',
     addressLocality: 'Patiala',
     addressRegion: 'Punjab',
     addressCountry: 'IN',

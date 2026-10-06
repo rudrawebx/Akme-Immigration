@@ -31,7 +31,7 @@ export default function Footer() {
               Visit Our Patiala Centre
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-heading">
-              AKME Immigrations & Education — Opposite Punjabi University, Patiala
+              AKME Immigrations & Education — SCO 31, Opposite Punjabi University, Patiala
             </h3>
             <p className="text-xs sm:text-sm text-slate-600">
               Walk in for face-to-face counselling, language demo sessions, and free profile assessments.
@@ -79,7 +79,7 @@ export default function Footer() {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
                 <span className="font-semibold text-slate-900 leading-snug">
-                  Opposite Punjabi University, Patiala, Punjab
+                  SCO 31, Opp. Punjab &amp; Sind Bank, Walia Enclave, Opp. Punjabi University, Patiala
                 </span>
               </div>
               <div className="flex items-center gap-2.5">

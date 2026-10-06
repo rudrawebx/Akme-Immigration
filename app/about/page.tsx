@@ -92,7 +92,7 @@ export default function AboutPage() {
                   <MapPin className="w-5 h-5 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-slate-900">Centre Location</strong>
-                    <span className="text-xs text-slate-600">Opposite Punjabi University, Patiala, Punjab</span>
+                    <span className="text-xs text-slate-600">SCO 31, Opp. Punjab &amp; Sind Bank, Walia Enclave, Opp. Punjabi University, Patiala</span>
                   </div>
                 </div>
 

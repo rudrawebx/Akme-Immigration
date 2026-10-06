@@ -665,7 +665,7 @@ export default function HomePage() {
                 New Centre Location
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900">
-                Visit AKME's New Centre — Opposite Punjabi University, Patiala
+                Visit AKME's New Centre — SCO 31, Opposite Punjabi University, Patiala
               </h2>
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                 We welcome students and parents to meet our senior counsellors in person. Walk in for course shortlisting, document checklist reviews, and computer lab demo sessions for IELTS and PTE.
@@ -676,7 +676,7 @@ export default function HomePage() {
                   <MapPin className="w-5 h-5 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-slate-900 font-bold">New Centre Address</strong>
-                    <span className="text-slate-600">Opposite Punjabi University, Patiala, Punjab, India</span>
+                    <span className="text-slate-600">SCO 31, Opposite Punjab &amp; Sind Bank, Walia Enclave, Opposite Punjabi University, Patiala, Punjab, India</span>
                   </div>
                 </div>
 

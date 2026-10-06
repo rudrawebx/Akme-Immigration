@@ -67,7 +67,7 @@ export async function sendLeadNotifications(lead: Lead) {
       </div>
       <p style="font-size: 13px; color: #64748b;">
         AKME Immigrations & Education<br/>
-        Opposite Punjabi University, Patiala, Punjab, India
+        SCO 31, Opposite Punjab &amp; Sind Bank, Walia Enclave, Opposite Punjabi University, Patiala, Punjab, India
       </p>
     </div>
   `;

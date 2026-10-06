@@ -54,7 +54,7 @@ export default function HeroSection() {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-brand-red text-xs font-bold shadow-xs">
               <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
               <MapPin className="w-3.5 h-3.5 text-brand-red flex-shrink-0" />
-              <span>New Centre: Opposite Punjabi University, Patiala</span>
+              <span>SCO 31, Opp. Punjab &amp; Sind Bank, Walia Enclave, Opp. Punjabi University, Patiala</span>
             </div>
 
             {/* Primary Brand & Positioning Headlines */}

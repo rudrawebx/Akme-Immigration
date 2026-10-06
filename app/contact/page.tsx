@@ -45,7 +45,7 @@ export default function ContactPage() {
               <div className="border-b border-slate-100 pb-4">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-brand-red">New Centre Location</span>
                 <h2 className="text-xl font-bold text-slate-900 font-heading mt-0.5">
-                  Opposite Punjabi University, Patiala
+                  SCO 31, Walia Enclave, Opposite Punjabi University, Patiala
                 </h2>
               </div>
 
@@ -57,7 +57,7 @@ export default function ContactPage() {
                   <div>
                     <strong className="block text-slate-900 font-semibold mb-0.5">Physical Address</strong>
                     <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                      Opposite Punjabi University, Patiala, Punjab, India
+                      SCO 31, Opposite Punjab &amp; Sind Bank, Walia Enclave, Opposite Punjabi University, Patiala, Punjab, India
                     </p>
                     <a
                       href={SITE_CONFIG.address.mapsUrl}
