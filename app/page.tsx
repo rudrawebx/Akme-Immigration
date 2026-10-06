@@ -1,176 +1,370 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { 
+  GraduationCap, 
+  FileCheck2, 
+  BookOpen, 
+  Languages, 
+  MapPin, 
   CheckCircle2, 
   ArrowRight, 
   Phone, 
-  MessageCircle, 
-  MapPin, 
-  Calendar, 
-  Clock, 
-  FileCheck2, 
-  ShieldCheck, 
-  Users, 
-  Globe, 
-  Award,
-  Sparkles,
+  MessageCircle,
+  HelpCircle,
+  Clock,
+  ShieldCheck,
   Star,
-  Quote,
-  Compass,
-  ArrowUpRight
+  Globe,
+  Award
 } from 'lucide-react';
-import { SITE_CONFIG, COUNTRIES_LIST, SERVICES_LIST } from '@/lib/config';
+import { 
+  SITE_CONFIG, 
+  PRIMARY_SERVICE_PILLARS, 
+  STUDY_ABROAD_COUNTRIES, 
+  IMMIGRATION_SERVICES, 
+  TEST_PREPARATION_COURSES, 
+  LANGUAGE_COURSES 
+} from '@/lib/config';
+import HeroSection from '@/components/HeroSection';
 import TrustStrip from '@/components/TrustStrip';
 import CountryCard from '@/components/CountryCard';
-import ServiceCard from '@/components/ServiceCard';
 import FAQAccordion, { FAQItem } from '@/components/FAQAccordion';
-import AssessmentForm from '@/components/AssessmentForm';
-import HeroSection from '@/components/HeroSection';
 
-export const metadata = {
-  title: 'AKME Immigrations | Study Visa & IELTS Coaching in Patiala',
-  description: 'Your trusted partner for global education, study visas, visitor visas and language preparation in Patiala, Punjab.',
+export const metadata: Metadata = {
+  title: 'AKME Immigrations & Education | Immigration & Study Abroad Consultant in Patiala',
+  description: "Patiala's Trusted Immigration & Education Institute — Opposite Punjabi University, Patiala. Comprehensive guidance for Study Abroad (Canada, UK, Australia, Germany, France, USA), Immigration & PR, IELTS/PTE Coaching, and French/German Language training.",
+  keywords: [
+    'AKME Immigrations Patiala',
+    'Immigration Consultant Patiala',
+    'Study Abroad Consultant Patiala',
+    'IELTS Institute Patiala',
+    'PTE Coaching Patiala',
+    'Canada Immigration Consultant Patiala',
+    'Australia Immigration Consultant Patiala',
+    'Study Visa Consultant Patiala',
+    'French Classes Patiala',
+    'German Classes Patiala',
+    'Immigration Consultant Near Punjabi University Patiala',
+  ],
+  alternates: {
+    canonical: 'https://akmeimmigrations.com',
+  },
+  openGraph: {
+    title: 'AKME Immigrations & Education | Patiala',
+    description: 'Study Abroad, Immigration, Test Preparation & Foreign Language Training — Opposite Punjabi University, Patiala.',
+    url: 'https://akmeimmigrations.com',
+    siteName: 'AKME Immigrations & Education',
+    locale: 'en_IN',
+    type: 'website',
+  },
 };
-
-// Filter out Immigration & PR from the Homepage Services grid as requested
-const HOMEPAGE_SERVICES = SERVICES_LIST.filter(s => s.slug !== 'immigration');
 
 const HOMEPAGE_FAQS: FAQItem[] = [
   {
-    question: "How do I choose the best country and course for my profile?",
-    answer: "During our initial profile assessment, an AKME counsellor analyzes your previous academic qualifications, percentage, gap years (if any), budget, and English proficiency (IELTS/PTE) to match you with designated learning institutions that offer high visa approval rates and post-study work permits.",
+    question: "Where is AKME Immigrations & Education located in Patiala?",
+    answer: "Our new centre is prominently located Opposite Punjabi University, Patiala, Punjab. Students can easily walk in for in-person academic counselling, document evaluation, and language laboratory demo sessions.",
   },
   {
-    question: "Does AKME Immigrations charge fees for initial counselling?",
-    answer: "No, the preliminary profile evaluation and eligibility assessment is completely free. We discuss suitable countries, courses, and intake timelines before any formal application begins.",
+    question: "What four core services does AKME Immigrations & Education provide?",
+    answer: "AKME brings four primary pillars all under one roof in Patiala: 1) Study Abroad admissions and student visas, 2) Immigration, PR & visitor visa pathways, 3) Test Preparation for IELTS, PTE, CELPIP, CAEL, GRE & Duolingo, and 4) Foreign Language Training in French, German (A1-B2) and Spoken English.",
   },
   {
-    question: "Do you provide coaching for IELTS and PTE in Patiala?",
-    answer: "Yes, our state-of-the-art academy in Urban Estate Phase II, Patiala offers comprehensive IELTS Academic/General and PTE Academic coaching with dedicated computer labs, certified trainers, and regular mock exams.",
+    question: "Does AKME charge any fee for the initial profile evaluation?",
+    answer: "No. Our preliminary profile assessment and country/course eligibility check is 100% free of cost. Our counsellors evaluate your academic scores, backlog history, gaps, and budget before recommending genuine pathways.",
   },
   {
-    question: "Can I apply for a study visa with study gaps or previous visa refusals?",
-    answer: "Yes. Many countries accept justified study or work gaps with legitimate experience certificates, salary accounts, and tax returns. We specialize in handling complicated cases and prior refusals by preparing robust Statements of Purpose (SOP) and addressing previous concerns transparently.",
+    question: "Can I apply for a study visa if I have gaps or previous visa refusals?",
+    answer: "Yes. Many designated institutions accept justified academic or employment gaps backed by salary records, experience letters, and tax certificates. For prior visa refusals, we conduct an exhaustive case assessment, review refusal letters/GCMS notes, and address previous visa officer concerns transparently without making false approval promises.",
   },
   {
-    question: "How do I pay university tuition fees?",
-    answer: "AKME Immigrations adheres to strict ethical compliance: students always transfer university tuition fees and government visa charges directly to the certified foreign university or respective embassy via official banking wire/Flywire/Convera channels. We do not collect tuition fees into private consultancy accounts.",
+    question: "How do students pay foreign university tuition fees?",
+    answer: "AKME Immigrations strictly adheres to statutory compliance: tuition fees and embassy charges are always wired directly from the student's or sponsor's bank account to the foreign university or government portal via authorized banking channels (Flywire/Convera/bank wire). AKME never collects or holds student tuition funds.",
+  },
+  {
+    question: "Are IELTS and PTE coaching batches available with mock test labs?",
+    answer: "Yes, our centre Opposite Punjabi University features modern computer labs with updated Pearson PTE scoring software, audio headsets, and comprehensive British Council/IDP standard IELTS material led by certified trainers.",
   },
 ];
 
 const VERIFIED_REVIEWS = [
   {
     name: "Manpreet Kaur",
-    location: "Mohali / Patiala",
+    location: "Patiala",
     service: "IELTS Coaching & Canada Study Visa",
+    country: "Canada",
+    date: "July 2026",
     rating: 5,
-    text: "I achieved 7.5 bands in IELTS after enrolling at AKME. The faculty gave special attention to my writing module. Their visa filing team assisted me through every step of my Canadian college admission.",
-  },
-  {
-    name: "Rakesh Sharma",
-    location: "Amritsar",
-    service: "Son's UK Study Visa & Financial Guidance",
-    rating: 5,
-    text: "Sanjeev sir and the team guided us through the entire financial documentation for my son's UK study visa. Their transparency regarding college deposits and CAS issuance gave us immense peace of mind.",
+    text: "I prepared for IELTS at AKME's Patiala academy and scored 7.5 bands. Their visa filing team assisted me through every step of my Canadian college admission and PAL documentation with complete clarity.",
   },
   {
     name: "Sahil Verma",
     location: "Patiala",
     service: "Australia Subclass 500 Visa",
+    country: "Australia",
+    date: "April 2026",
     rating: 5,
-    text: "Got my Australian study visa granted without any hassle. From course selection in Melbourne to Genuine Temporary Entrant (GS) documentation, AKME provided accurate and prompt support.",
+    text: "Got my Australian student visa granted without hassle. From course shortlisting in Melbourne to Genuine Student (GS) documentation, AKME provided accurate and prompt support right here in Patiala.",
+  },
+  {
+    name: "Taranpreet Kaur",
+    location: "Patiala",
+    service: "PTE Academic Prep & New Zealand Visa",
+    country: "New Zealand",
+    date: "March 2026",
+    rating: 5,
+    text: "The computer lab for PTE at AKME is excellent. The mock score reports were very accurate compared to the actual Pearson exam. I scored 67 overall and secured my admission effortlessly.",
   },
 ];
 
-const RECENT_BLOGS = [
+const HOW_AKME_WORKS_STEPS = [
   {
-    slug: "canada-study-permit-updates",
-    title: "Canada Study Permit & PGWP Changes: Complete Guide for Indian Students",
-    date: "September 2026",
-    category: "Canada Visa",
-    desc: "Understanding provincial attestation letters (PAL), eligible degree programs, and updated spouse open work permit regulations.",
+    step: "01",
+    title: "Free Profile Assessment",
+    desc: "Detailed evaluation of your academic qualifications, test scores, work history, and target destinations.",
   },
   {
-    slug: "australia-student-visa-subclass-500",
-    title: "Australia Subclass 500 Student Visa: New Financial Requirements & GS Criteria",
-    date: "September 2026",
-    category: "Australia Visa",
-    desc: "A breakdown of the Genuine Student (GS) assessment and essential documentation needed for Australian universities.",
+    step: "02",
+    title: "Counselling & Strategy",
+    desc: "One-on-one session to establish clear timelines, realistic admissibility, and family budget considerations.",
   },
   {
-    slug: "germany-public-universities-guide",
-    title: "How to Study in Germany Tuition-Free: APS Certificate & Blocked Account Setup",
-    date: "August 2026",
-    category: "Europe Education",
-    desc: "Step-by-step roadmap for Indian graduates applying to German public universities with zero tuition fees.",
+    step: "03",
+    title: "Course / Country Selection",
+    desc: "Shortlisting designated learning institutions and career-aligned programs across Canada, UK, Australia, Europe & USA.",
+  },
+  {
+    step: "04",
+    title: "Documentation & SOP",
+    desc: "Meticulous verification of academic transcripts, financial paperwork, Statements of Purpose, and affidavits.",
+  },
+  {
+    step: "05",
+    title: "Application & Filing",
+    desc: "Timely lodgement of university applications and visa petitions strictly in accordance with embassy guidelines.",
+  },
+  {
+    step: "06",
+    title: "Pre-Departure / Next Steps",
+    desc: "Mock visa interviews, accommodation guidance, foreign exchange advice, and post-arrival transition support.",
   },
 ];
 
 export default function HomePage() {
   return (
     <div className="bg-white">
-      {/* 1. HERO SECTION WITH VIDEO SHOWCASE & ASSESSMENT */}
+      
+      {/* 1. HERO SECTION WITH PROMINENT POSITIONING & 4 PILLARS */}
       <HeroSection />
 
-      {/* 2. TRUST STRIP */}
+      {/* 2. TRUST / QUICK SERVICE STRIP WITH 4 CORE PILLARS */}
       <TrustStrip />
 
-      {/* 3. CORE SERVICES SECTION (Immigration & PR removed from this section as requested) */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+      {/* 3. FOUR PRIMARY SERVICE PILLARS: "What Can We Help You With?" */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
-              Our Professional Services
+              Four Core Disciplines
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 font-heading">
-              Comprehensive Visa & Education Solutions
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+              What Can We Help You With?
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mt-3">
-              From university course selection to visa filing and certified language prep, AKME provides structured end-to-end guidance.
+              AKME brings overseas admissions, immigration advisory, test preparation, and foreign language fluency together in Patiala.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {HOMEPAGE_SERVICES.map((service) => (
-              <ServiceCard
-                key={service.slug}
-                slug={service.slug}
-                title={service.title}
-                shortDesc={service.shortDesc}
-                badge={service.badge}
-                iconName={service.icon}
-              />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PRIMARY_SERVICE_PILLARS.map((pillar, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-brand-red/40 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-red-50 border border-red-100 text-brand-red group-hover:bg-brand-red group-hover:text-white flex items-center justify-center transition-colors shadow-2xs">
+                      {index === 0 && <GraduationCap className="w-6 h-6" />}
+                      {index === 1 && <FileCheck2 className="w-6 h-6" />}
+                      {index === 2 && <BookOpen className="w-6 h-6" />}
+                      {index === 3 && <Languages className="w-6 h-6" />}
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                      {pillar.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors mb-2">
+                    {pillar.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                    {pillar.description}
+                  </p>
+                </div>
+
+                <Link
+                  href={pillar.href}
+                  className="inline-flex items-center justify-between text-xs font-bold text-brand-red group-hover:text-brand-redDark pt-4 border-t border-slate-100 transition-colors"
+                >
+                  <span>{pillar.cta}</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. WHY AKME — CREDIBILITY & LOCAL PATIALA TRUST */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
+                The AKME Difference
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 leading-tight">
+                Patiala's Trusted Partner for Truthful, Profile-Based Guidance
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                Navigating foreign education and visa statutes requires precision, legal accountability, and complete transparency. At AKME, we reject over-promotional claims and focus on what genuinely matters: verified institutional credentials, authentic documentation, and strategic student counselling.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+                <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mb-1" />
+                  <h4 className="font-bold text-slate-900 text-xs sm:text-sm">Experienced Counselling</h4>
+                  <p className="text-[11px] text-slate-600 mt-0.5">Senior counsellors with deep understanding of global admissions & visa rules.</p>
+                </div>
+
+                <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mb-1" />
+                  <h4 className="font-bold text-slate-900 text-xs sm:text-sm">Profile-Based Strategy</h4>
+                  <p className="text-[11px] text-slate-600 mt-0.5">Recommendations tailored strictly to your academics, gaps, and career aspirations.</p>
+                </div>
+
+                <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mb-1" />
+                  <h4 className="font-bold text-slate-900 text-xs sm:text-sm">Direct Institutional Fees</h4>
+                  <p className="text-[11px] text-slate-600 mt-0.5">100% direct bank wire to foreign universities. AKME never collects tuition fees.</p>
+                </div>
+
+                <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mb-1" />
+                  <h4 className="font-bold text-slate-900 text-xs sm:text-sm">Refusal Case Assessment</h4>
+                  <p className="text-[11px] text-slate-600 mt-0.5">Forensic review of previous visa refusals and constructive file restructuring.</p>
+                </div>
+              </div>
+
+              <div className="pt-2 flex items-center gap-4">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-brand-red hover:underline"
+                >
+                  <span>Learn more about AKME Patiala</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <span className="text-slate-300">•</span>
+                <Link
+                  href="/contact"
+                  className="text-sm font-semibold text-slate-700 hover:text-brand-red transition-colors"
+                >
+                  Visit Centre Opposite Punjabi University →
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Card: New Centre Highlights */}
+            <div className="lg:col-span-6">
+              <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 space-y-6 shadow-xs">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-brand-red">Patiala Institute</span>
+                    <h3 className="text-xl font-bold text-slate-900 mt-0.5">Opposite Punjabi University</h3>
+                  </div>
+                  <span className="px-3 py-1 bg-red-100 text-brand-red text-xs font-bold rounded-full">
+                    Modern Academy
+                  </span>
+                </div>
+
+                <div className="space-y-3.5 text-xs sm:text-sm text-slate-700">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="block text-slate-900">Physical Presence in Patiala</strong>
+                      <span className="text-slate-600">Opposite Punjabi University, Patiala, Punjab. Accessible campus for students across Malwa region.</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <BookOpen className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="block text-slate-900">In-House IELTS & PTE Computer Lab</strong>
+                      <span className="text-slate-600">Daily timed mock tests, AI speech assessment modules, and individual speaking cabins.</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Languages className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="block text-slate-900">French & German Classroom Batches</strong>
+                      <span className="text-slate-600">Certified instructors teaching A1, A2, B1, and B2 levels for European university admissions & PR points.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <Link
+                    href="/contact"
+                    className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark transition-colors text-center shadow-xs"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    <span>Get Directions to Centre</span>
+                  </Link>
+                  <a
+                    href={`tel:${SITE_CONFIG.phoneRaw}`}
+                    className="inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-slate-800 bg-white hover:bg-slate-100 border border-slate-200 transition-colors"
+                  >
+                    <Phone className="w-4 h-4 text-brand-red" />
+                    <span>Call Centre</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* 4. POPULAR STUDY DESTINATIONS (Using updated Canada photo) */}
-      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+      {/* 5. STUDY ABROAD COUNTRIES (All 8 destinations) */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
-                Top Destinations
+                Global Education Hubs
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 font-heading">
-                Explore Global Study & Settlement Options
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+                Study Abroad Destinations
               </h2>
               <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
-                We assist with university admissions and student visas across leading English-speaking and European study hubs.
+                Comprehensive university admissions and study visa guidance across Canada, Australia, UK, Germany, France, Ireland, USA, and Europe.
               </p>
             </div>
             <Link
-              href="/countries"
+              href="/study-abroad"
               className="inline-flex items-center gap-1 text-sm font-bold text-brand-red hover:text-brand-redDark group"
             >
-              <span>View All Countries</span>
+              <span>Explore All 8 Destinations</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {COUNTRIES_LIST.slice(0, 4).map((country) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {STUDY_ABROAD_COUNTRIES.map((country) => (
               <CountryCard
                 key={country.slug}
                 slug={country.slug}
@@ -185,256 +379,275 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. WHY CHOOSE AKME IMMIGRATIONS (Clean Light Design - No Blue/Black) */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
-                The AKME Standard
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold font-heading text-slate-900 leading-tight">
-                Ethical Counselling Built on Verification & Clarity
-              </h2>
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Overseas education and visa policies are continuously evolving. At AKME Immigrations, we avoid gimmicks and focus on verified institution lists, genuine documentation, and authentic candidate eligibility.
-              </p>
-
-              <div className="space-y-4 pt-2">
-                <div className="flex items-start gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0 mt-0.5 border border-red-100">
-                    <CheckCircle2 className="w-5 h-5 text-brand-red" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-base">Direct Institutional Payments</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-0.5">All tuition fee transactions are remitted directly from the student's or sponsor's bank account to the educational institution.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0 mt-0.5 border border-red-100">
-                    <CheckCircle2 className="w-5 h-5 text-brand-red" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-base">In-House Language Laboratory</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-0.5">IELTS, PTE, and German language training delivered by certified instructors right at our Patiala academy.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0 mt-0.5 border border-red-100">
-                    <CheckCircle2 className="w-5 h-5 text-brand-red" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-base">Refusal Case Analysis</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-0.5">In-depth case auditing for candidates who have faced visa refusals, providing clear actionable solutions.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-brand-red hover:underline"
-                >
-                  <span>Learn more about our team & Patiala office</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Feature Card (Clean Light Style) */}
-            <div className="lg:col-span-6">
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 space-y-6 shadow-sm">
-                <h3 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-4">
-                  Our Step-by-Step Pathway
-                </h3>
-                <ol className="space-y-4 text-sm">
-                  <li className="flex items-start gap-3">
-                    <span className="w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs flex-shrink-0">1</span>
-                    <div>
-                      <strong className="text-slate-900 block">Profile Assessment</strong>
-                      <span className="text-slate-600 text-xs">Review of academic background, gaps, and test scores.</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs flex-shrink-0">2</span>
-                    <div>
-                      <strong className="text-slate-900 block">Counselling & Country Selection</strong>
-                      <span className="text-slate-600 text-xs">Selecting the right country, university, and eligible intake.</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs flex-shrink-0">3</span>
-                    <div>
-                      <strong className="text-slate-900 block">Course & Offer Letter Lodgment</strong>
-                      <span className="text-slate-600 text-xs">Securing offer letters from verified foreign institutions.</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs flex-shrink-0">4</span>
-                    <div>
-                      <strong className="text-slate-900 block">Documentation & Financial Audit</strong>
-                      <span className="text-slate-600 text-xs">Preparation of statements, funds proof, and SOP drafting.</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs flex-shrink-0">5</span>
-                    <div>
-                      <strong className="text-slate-900 block">Visa Application Submission</strong>
-                      <span className="text-slate-600 text-xs">Formal filing on official high commission portals.</span>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="w-7 h-7 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-xs flex-shrink-0">6</span>
-                    <div>
-                      <strong className="text-slate-900 block">Visa Decision & Pre-Departure</strong>
-                      <span className="text-slate-600 text-xs">Passport stamping, accommodation advice, and travel briefing.</span>
-                    </div>
-                  </li>
-                </ol>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 6. VERIFIED CLIENT EXPERIENCES */}
+      {/* 6. IMMIGRATION PATHWAYS SECTION */}
       <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
-              Candidate Feedback
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 font-heading">
-              Authentic Student & Family Experiences
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Verified testimonials from candidates who received study visas and coaching guidance through AKME Immigrations.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
+                Immigration Advisory
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+                Structured Immigration & Visa Services
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
+                From Permanent Residency point evaluations to visitor visa documentation and refusal case reviews.
+              </p>
+            </div>
+            <Link
+              href="/immigration"
+              className="inline-flex items-center gap-1 text-sm font-bold text-brand-red hover:text-brand-redDark group"
+            >
+              <span>All Immigration Pathways</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {VERIFIED_REVIEWS.map((review, i) => (
-              <div 
-                key={i} 
-                className="bg-slate-50 rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col justify-between"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {IMMIGRATION_SERVICES.map((serv) => (
+              <div
+                key={serv.slug}
+                className="group bg-slate-50 rounded-3xl border border-slate-200 p-6 hover:bg-white hover:border-brand-red/40 hover:shadow-lg transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center gap-1 text-amber-400 mb-3">
-                    {[...Array(review.rating)].map((_, idx) => (
-                      <Star key={idx} className="w-4 h-4 fill-amber-400" />
-                    ))}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-brand-red bg-red-50 px-2.5 py-0.5 rounded-full border border-red-100">
+                      {serv.badge}
+                    </span>
+                    <FileCheck2 className="w-5 h-5 text-slate-400 group-hover:text-brand-red transition-colors" />
                   </div>
-                  <Quote className="w-8 h-8 text-red-200 mb-2" />
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
-                    "{review.text}"
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-brand-red transition-colors mb-2">
+                    {serv.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                    {serv.shortDesc}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-6 border-t border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm">{review.name}</h4>
-                  <p className="text-xs text-brand-red font-semibold">{review.service}</p>
-                  <p className="text-[11px] text-slate-400">{review.location}</p>
-                </div>
+                <Link
+                  href={serv.href}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-red hover:underline pt-3 border-t border-slate-200/60"
+                >
+                  <span>Explore Pathway</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-10">
-            <Link
-              href="/success-stories"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-slate-800 bg-slate-50 border border-slate-200 hover:border-brand-red hover:text-brand-red shadow-sm transition-all"
-            >
-              <span>View More Success Stories</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* 7. PROFILE ASSESSMENT CALLOUT */}
-      <section className="py-16 bg-brand-red text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-heading">
-            Not Sure Which Visa or Study Option Fits You?
-          </h2>
-          <p className="text-sm sm:text-base text-red-100 max-w-2xl mx-auto leading-relaxed">
-            Every candidate’s situation is unique. Speak directly with our Patiala counsellors to evaluate your qualification, funds, and target intake.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Link
-              href="/profile-assessment"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-slate-900 bg-white hover:bg-slate-100 shadow-xl transition-all"
-            >
-              <span>Check Your Eligibility</span>
-              <ArrowRight className="w-5 h-5 text-brand-red" />
-            </Link>
-            <a
-              href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappMessage)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-base font-bold text-emerald-900 bg-emerald-100 hover:bg-emerald-200 transition-colors"
-            >
-              <MessageCircle className="w-5 h-5 fill-emerald-600 text-white" />
-              <span>WhatsApp an Advisor</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. LATEST NEWS & BLOG ARTICLES */}
+      {/* 7. TEST PREPARATION (IELTS, PTE, CELPIP, CAEL, GRE, Duolingo) */}
       <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
-                Immigration Insights
+                In-House Academy & Labs
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 font-heading">
-                Latest Visa Updates & Educational Guides
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+                Test Preparation in Patiala
               </h2>
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
+                Prepare confidently with structured computer lab practice, real exam simulations, and certified trainers.
+              </p>
             </div>
             <Link
-              href="/blog"
+              href="/test-preparation"
+              className="inline-flex items-center gap-1 text-sm font-bold text-brand-red hover:text-brand-redDark group"
+            >
+              <span>Explore All Test Prep</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {TEST_PREPARATION_COURSES.map((course) => (
+              <div
+                key={course.slug}
+                className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs hover:border-brand-red/40 hover:shadow-md transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                      {course.badge}
+                    </span>
+                    <BookOpen className="w-5 h-5 text-slate-400" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    {course.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                    {course.shortDesc}
+                  </p>
+                </div>
+
+                <Link
+                  href={course.href}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-red hover:underline pt-3 border-t border-slate-100"
+                >
+                  <span>Course Details & Batches</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. FOREIGN LANGUAGES (French, German, Spoken English) */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
+                Foreign Languages & Fluency
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+                French, German & Spoken English Training
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
+                Level-based language training (A1 to B2) supporting university admissions, PR points, and conversational fluency.
+              </p>
+            </div>
+            <Link
+              href="/languages"
+              className="inline-flex items-center gap-1 text-sm font-bold text-brand-red hover:text-brand-redDark group"
+            >
+              <span>View All Language Batches</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {LANGUAGE_COURSES.map((lang) => (
+              <div
+                key={lang.slug}
+                className="bg-slate-50 rounded-3xl border border-slate-200 p-6 sm:p-7 hover:bg-white hover:border-brand-red/40 hover:shadow-lg transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-brand-red bg-red-50 px-2.5 py-0.5 rounded-full border border-red-100">
+                      {lang.badge}
+                    </span>
+                    <span className="text-xs font-bold text-slate-700">{lang.levels}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {lang.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                    {lang.shortDesc}
+                  </p>
+                </div>
+
+                <Link
+                  href={lang.href}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-red hover:underline pt-3 border-t border-slate-200/60"
+                >
+                  <span>Batch Schedule & Fees</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. HOW AKME WORKS — 6-STEP TRANSPARENT PROCESS */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
+              Clear Roadmap
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+              How AKME Works
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 mt-2">
+              A transparent 6-step pathway from initial profile evaluation to university enrolment and departure.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {HOW_AKME_WORKS_STEPS.map((step, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-3xl p-6 border border-slate-200 shadow-2xs relative"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-2xl font-black text-brand-red font-heading">
+                    {step.step}
+                  </span>
+                  <span className="w-8 h-8 rounded-full bg-red-50 text-brand-red text-xs font-bold flex items-center justify-center">
+                    ✓
+                  </span>
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 10. GENUINE CANDIDATE EXPERIENCES */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
+                Verified Candidate Feedback
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-heading">
+                Genuine Success Stories
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
+                Authentic testimonials from students and families who entrusted AKME Immigrations with their educational admissions and visa applications.
+              </p>
+            </div>
+            <Link
+              href="/success-stories"
               className="inline-flex items-center gap-1 text-sm font-bold text-brand-red hover:underline"
             >
-              <span>View All Articles</span>
+              <span>Read All Candidate Stories</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {RECENT_BLOGS.map((blog) => (
+            {VERIFIED_REVIEWS.map((review, i) => (
               <div
-                key={blog.slug}
-                className="bg-white rounded-3xl p-6 border border-slate-200 hover:border-brand-red/40 hover:shadow-lg transition-all flex flex-col justify-between"
+                key={i}
+                className="bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200 flex flex-col justify-between"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs text-slate-500">
-                    <span className="font-bold text-brand-red bg-red-50 px-2 py-0.5 rounded border border-red-100">
-                      {blog.category}
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-1 text-amber-400">
+                      {[...Array(review.rating)].map((_, idx) => (
+                        <Star key={idx} className="w-4 h-4 fill-amber-400" />
+                      ))}
+                    </div>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-white text-slate-700 border border-slate-200">
+                      {review.country}
                     </span>
-                    <span>{blog.date}</span>
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 hover:text-brand-red transition-colors">
-                    <Link href={`/blog#${blog.slug}`}>{blog.title}</Link>
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {blog.desc}
+
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-6">
+                    "{review.text}"
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-slate-100">
-                  <Link
-                    href={`/blog#${blog.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-red hover:underline"
-                  >
-                    <span>Read Article</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                <div className="pt-4 border-t border-slate-200 space-y-1">
+                  <h4 className="font-bold text-slate-900 text-sm">{review.name}</h4>
+                  <p className="text-xs text-brand-red font-semibold">{review.service}</p>
+                  <div className="flex items-center justify-between text-[11px] text-slate-400 pt-0.5">
+                    <span>{review.location}</span>
+                    <span>{review.date}</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -442,45 +655,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. FAQ SECTION (Light Background) */}
-      <FAQAccordion items={HOMEPAGE_FAQS} />
-
-      {/* 10. OFFICE LOCATION & CONTACT DETAILS (Clean Light Design - No Blue/Black) */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
+      {/* 11. PROMINENT NEW CENTRE LOCATION SECTION */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-6 space-y-6">
               <span className="text-xs uppercase font-bold tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
-                Visit Our Patiala Centre
+                New Centre Location
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold font-heading text-slate-900">
-                Walk In for In-Person Counselling & IELTS Prep
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900">
+                Visit AKME's New Centre — Opposite Punjabi University, Patiala
               </h2>
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Conveniently located on Rajpura Road near Vardhman Hospital in Urban Estate Phase II. Meet our experienced counsellors and view our coaching facilities.
+                We welcome students and parents to meet our senior counsellors in person. Walk in for course shortlisting, document checklist reviews, and computer lab demo sessions for IELTS and PTE.
               </p>
 
-              <div className="space-y-4 pt-2 text-sm text-slate-700">
-                <div className="flex items-start gap-3 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+              <div className="space-y-3.5 text-xs sm:text-sm text-slate-700">
+                <div className="flex items-start gap-3 p-4 bg-white rounded-2xl border border-slate-200 shadow-2xs">
                   <MapPin className="w-5 h-5 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900 font-bold">Patiala Head Office</strong>
-                    <span className="text-slate-600 text-xs sm:text-sm">{SITE_CONFIG.address.full}</span>
+                    <strong className="block text-slate-900 font-bold">New Centre Address</strong>
+                    <span className="text-slate-600">Opposite Punjabi University, Patiala, Punjab, India</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 shadow-2xs">
                   <Phone className="w-5 h-5 text-brand-red flex-shrink-0" />
                   <div>
-                    <strong className="block text-slate-900 font-bold">Direct Consultation Helpline</strong>
+                    <strong className="block text-slate-900 font-bold">Direct Helpline</strong>
                     <a href={`tel:${SITE_CONFIG.phoneRaw}`} className="text-brand-red font-bold hover:underline">
                       {SITE_CONFIG.phoneDisplay}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 shadow-2xs">
                   <Clock className="w-5 h-5 text-slate-500 flex-shrink-0" />
                   <div>
                     <strong className="block text-slate-900 font-bold">Centre Timings</strong>
@@ -489,7 +699,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="pt-4 flex flex-wrap items-center gap-3">
+              <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a
                   href={SITE_CONFIG.address.mapsUrl}
                   target="_blank"
@@ -497,22 +707,22 @@ export default function HomePage() {
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark shadow-md transition-colors"
                 >
                   <MapPin className="w-4 h-4" />
-                  <span>Open in Google Maps</span>
+                  <span>Get Directions</span>
                 </a>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-slate-800 bg-white hover:bg-slate-100 border border-slate-200 shadow-sm transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-slate-800 bg-white hover:bg-slate-100 border border-slate-200 shadow-xs transition-colors"
                 >
-                  <span>All Contact Details</span>
+                  <span>Contact Centre Details</span>
                 </Link>
               </div>
             </div>
 
-            {/* Google Map Embed */}
+            {/* Google Maps Embed for Punjabi University Patiala */}
             <div className="lg:col-span-6 h-[340px] sm:h-[420px] rounded-3xl overflow-hidden border border-slate-200 shadow-md relative bg-white p-2">
               <iframe
-                title="AKME Immigrations Patiala Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3443.4079860228393!2d76.4172!3d30.3425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391028e3b1234567%3A0x123456789abcdef!2sUrban%20Estate%20Phase%20II%2C%20Patiala%2C%20Punjab!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+                title="AKME Immigrations New Centre Opposite Punjabi University Patiala"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13778.536768340156!2d76.4385!3d30.3585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3910287232e01df3%3A0xa64aa8a3424d5e9b!2sPunjabi%20University%2C%20Patiala%2C%20Punjab!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0, borderRadius: '1rem' }}
@@ -527,32 +737,52 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 11. FINAL CONVERSION CTA */}
-      <section className="py-16 bg-white border-t border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      {/* 12. FREQUENTLY ASKED QUESTIONS */}
+      <FAQAccordion items={HOMEPAGE_FAQS} />
+
+      {/* 13. FINAL CONVERSION CTA */}
+      <section className="py-16 sm:py-20 bg-white border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-red bg-red-50 px-3 py-1 rounded-full border border-red-100">
+            Take The Next Step
+          </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading">
-            Start Your Journey Today
+            Ready to Plan Your Next Step?
           </h2>
           <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
-            Take the first step toward your global degree or travel with verified guidance from AKME Immigrations.
+            Connect with Patiala's trusted immigration & education institute for an honest, profile-based evaluation.
           </p>
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <Link
               href="/profile-assessment"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white bg-brand-red hover:bg-brand-redDark shadow-lg transition-all"
             >
-              <span>Free Profile Assessment</span>
+              <span>Get Free Profile Assessment</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
+
+            <a
+              href={`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors shadow-xs"
+            >
+              <MessageCircle className="w-5 h-5 fill-emerald-600 text-white" />
+              <span>WhatsApp AKME</span>
+            </a>
+
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-300 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-base font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-colors"
             >
-              <span>Contact AKME</span>
+              <MapPin className="w-4 h-4 text-brand-red" />
+              <span>Visit Our Centre</span>
             </Link>
           </div>
         </div>
       </section>
+
     </div>
   );
 }

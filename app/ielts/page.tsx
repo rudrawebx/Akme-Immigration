@@ -3,7 +3,7 @@ import ServicePageTemplate, { ServiceData } from '@/components/ServicePageTempla
 
 export const metadata: Metadata = {
   title: 'Best IELTS Coaching in Patiala | Academic & General Training - AKME',
-  description: 'Certified IELTS coaching in Urban Estate Phase II, Patiala. Master Reading, Writing, Listening, and Speaking modules with daily mock tests and expert trainers.',
+  description: 'Certified IELTS coaching Opposite Punjabi University, Patiala. Master Reading, Writing, Listening, and Speaking modules with daily mock tests and expert trainers.',
 };
 
 const IELTS_DATA: ServiceData = {

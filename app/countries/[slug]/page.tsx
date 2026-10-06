@@ -257,6 +257,70 @@ const COUNTRY_DETAILS: Record<string, {
       },
     ],
   },
+
+  france: {
+    name: "France",
+    heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1600&q=80",
+    overview: "France is a leading global education hub celebrated for prestigious Grandes Écoles, subsidized higher education, world-renowned fashion, business & engineering institutes, and a generous 5-year post-study Schengen alumni visa.",
+    whyChoose: [
+      "Subsidized tuition fees and housing allowance (CAF) for international students.",
+      "5-Year Short-Stay Schengen Alumni Visa for Indian master's graduates.",
+      "World-leading specialized schools in Luxury Brand Management, Culinary Arts, and Engineering.",
+      "English-taught degree programs with French language support available at AKME in Patiala.",
+    ],
+    intakes: ["Autumn Intake (September/October) - Major", "Spring Intake (January/February) - Select"],
+    costTuition: "€3,000 - €16,000 per year (depending on public vs private Grande École)",
+    costLiving: "€8,000 - €11,000 per year",
+    financialProof: "Proof of tuition fee coverage + €615/month living funds for one academic year",
+    ieltsRequirement: "IELTS 6.0 - 6.5 overall (waivers available for qualifying English-medium degree holders)",
+    pteRequirement: "PTE Academic 58 - 63+",
+    academicRequirement: "Minimum 55% - 60% in high school or Bachelor's degree from recognized university",
+    popularCourses: ["Luxury Brand & Fashion Management", "International Business & MBA", "Data Analytics & AI", "Culinary Arts & Hospitality Management"],
+    postStudyWork: "Up to 2 Years APS (Autorisation Provisoire de Séjour) / RECE permit for job search, plus 5-year alumni visa for master's degree holders.",
+    lastUpdated: "September 2026",
+    faqs: [
+      {
+        question: "Can I study in France in English without knowing French?",
+        answer: "Yes, hundreds of bachelor's and master's degree programs across France are taught entirely in English. However, learning A1/A2 French at AKME Patiala helps significantly with daily life, internships, and networking in France.",
+      },
+      {
+        question: "What is the 5-year Schengen visa benefit for Indian alumni?",
+        answer: "Indian students who graduate with a master's degree or higher from an accredited French institution are eligible for a 5-year short-stay Schengen visa to return to France and travel across the Schengen zone.",
+      },
+    ],
+  },
+
+  europe: {
+    name: "Europe (Schengen)",
+    heroImage: "https://images.unsplash.com/photo-1491557345352-5929e343eb89?auto=format&fit=crop&w=1600&q=80",
+    overview: "Europe offers affordable, high-quality English-taught degrees across countries like the Netherlands, Sweden, Poland, Hungary, and Italy with seamless Schengen travel mobility and clear post-study stay-back frameworks.",
+    whyChoose: [
+      "Borderless Schengen mobility across 29 European countries on a single student visa.",
+      "High standard of academic research and affordable living costs compared to North America.",
+      "Post-study job search visas varying from 9 to 18 months across different EU nations.",
+      "Diverse multicultural environment with English-taught Bachelor's and Master's degrees.",
+    ],
+    intakes: ["Autumn (September/October)", "Spring (February/March)"],
+    costTuition: "€2,500 - €14,000 per year (varies by country and program)",
+    costLiving: "€7,500 - €12,000 per year",
+    financialProof: "Proof of 1-year living funds deposited in bank account or national blocked account",
+    ieltsRequirement: "IELTS 6.0 - 6.5 overall (or equivalent PTE)",
+    pteRequirement: "PTE Academic 56 - 64",
+    academicRequirement: "Senior secondary or Bachelor's degree with 55%+ marks",
+    popularCourses: ["Computer Science & Software Engineering", "International Business Management", "Environmental & Renewable Sciences", "Public Policy & Economics"],
+    postStudyWork: "12 to 18 months orientation / job search permits depending on the specific European destination country.",
+    lastUpdated: "September 2026",
+    faqs: [
+      {
+        question: "Can I travel to other European countries on my student visa?",
+        answer: "Yes, holding a National Student Visa (Type D) or residence permit from any Schengen member state allows visa-free travel across the entire Schengen Zone for up to 90 days in any 180-day period.",
+      },
+      {
+        question: "Do European universities offer English-medium degrees?",
+        answer: "Yes, thousands of bachelor's and master's programs in the Netherlands, Poland, Germany, Sweden, and Italy are delivered completely in English.",
+      },
+    ],
+  },
 };
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {

@@ -10,15 +10,17 @@ import {
   CheckCircle2, 
   ArrowRight,
   BookOpen,
-  Users,
-  Compass
+  GraduationCap,
+  FileCheck2,
+  Languages,
+  Clock
 } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/config';
 import TrustStrip from '@/components/TrustStrip';
 
 export const metadata: Metadata = {
-  title: 'About AKME Immigrations & Education | Premier Consultancy in Patiala',
-  description: 'Learn about AKME Immigrations & Education, Patiala. Our mission, certified counsellors, ethical visa processing, in-house language academy, and official premises in Urban Estate Phase II.',
+  title: 'About AKME Immigrations & Education | Patiala Institute',
+  description: "Learn about AKME Immigrations & Education, Patiala's trusted immigration & education institute located Opposite Punjabi University, Patiala. Our mission, verified counselling, in-house language academy, and ethical visa guidance.",
 };
 
 export default function AboutPage() {
@@ -27,14 +29,15 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="bg-gradient-to-b from-slate-50 via-white to-slate-50 text-slate-900 py-14 sm:py-20 relative overflow-hidden border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl mx-auto space-y-4">
-          <span className="inline-block px-3.5 py-1 bg-red-50 text-brand-red text-xs font-bold uppercase rounded-full border border-red-200">
-            About AKME Immigrations & Education
-          </span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-red-50 text-brand-red text-xs font-bold uppercase rounded-full border border-red-200">
+            <MapPin className="w-3.5 h-3.5" />
+            <span>Patiala's Trusted Immigration & Education Institute</span>
+          </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold font-heading text-slate-900">
-            Transforming Dreams into Destination
+            AKME Immigrations & Education
           </h1>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Headquartered in Patiala, Punjab, AKME Immigrations is dedicated to guiding students and families with complete legal transparency, personalized course selection, and verified documentation.
+            Headquartered Opposite Punjabi University, Patiala, AKME is dedicated to guiding students and families with complete legal transparency, personalized admissions, and verified documentation.
           </p>
         </div>
       </section>
@@ -51,7 +54,7 @@ export default function AboutPage() {
               A Transparent Alternative to Overseas Misinformation
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Founded on the principles of ethics and accountability, AKME Immigrations operates from SCO 37 & 38, near Vardhman Hospital, Urban Estate Phase II, Rajpura Road, Patiala. We believe that choosing to study or settle abroad is a life-defining family investment that deserves meticulous care rather than false shortcuts.
+              Founded on the principles of ethics and accountability, AKME Immigrations operates from its centre located <strong>Opposite Punjabi University, Patiala</strong>. We believe that choosing to study or settle abroad is a life-defining family investment that deserves meticulous care rather than false shortcuts.
             </p>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
               Unlike agencies that rely on aggressive marketing or fabricated visa guarantees, AKME adheres to strict statutory guidelines. We verify institution credentials, guide direct student-to-university fee transactions, and empower candidates with rigorous language training through our in-house academy.
@@ -84,12 +87,12 @@ export default function AboutPage() {
                 />
               </div>
 
-              <div className="space-y-3 border-t border-slate-100 pt-6 text-sm text-slate-700">
+              <div className="space-y-3.5 border-t border-slate-100 pt-6 text-sm text-slate-700">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-brand-red flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900">Head Office Location</strong>
-                    <span className="text-xs text-slate-600">{SITE_CONFIG.address.full}</span>
+                    <strong className="block text-slate-900">Centre Location</strong>
+                    <span className="text-xs text-slate-600">Opposite Punjabi University, Patiala, Punjab</span>
                   </div>
                 </div>
 
@@ -112,15 +115,29 @@ export default function AboutPage() {
                     </a>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-slate-400 flex-shrink-0" />
+                  <div>
+                    <strong className="block text-slate-900">Working Hours</strong>
+                    <span className="text-xs text-slate-600">{SITE_CONFIG.hours.days}: {SITE_CONFIG.hours.time}</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="pt-2">
+              <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/contact"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark transition-colors"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark transition-colors text-center"
                 >
-                  <span>Visit Our Patiala Office</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <MapPin className="w-4 h-4" />
+                  <span>Visit Patiala Centre</span>
+                </Link>
+                <Link
+                  href="/profile-assessment"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 transition-colors text-center"
+                >
+                  <span>Free Assessment</span>
                 </Link>
               </div>
             </div>
@@ -128,13 +145,13 @@ export default function AboutPage() {
         </div>
 
         {/* Core Pillars */}
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm space-y-8">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xs space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
               Our Core Operating Principles
             </h3>
             <p className="text-xs sm:text-sm text-slate-500">
-              Clear commitments that define every candidate engagement at AKME Immigrations.
+              Clear commitments that define every candidate engagement at AKME Immigrations & Education.
             </p>
           </div>
 

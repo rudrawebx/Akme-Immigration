@@ -95,10 +95,9 @@ const localBusinessSchema = {
   email: SITE_CONFIG.email,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'SCO 37 & 38, near Vardhman Hospital, Urban Estate Phase II, Rajpura Road',
+    streetAddress: 'Opposite Punjabi University',
     addressLocality: 'Patiala',
     addressRegion: 'Punjab',
-    postalCode: '147002',
     addressCountry: 'IN',
   },
   geo: {

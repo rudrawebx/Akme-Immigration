@@ -121,7 +121,7 @@ export default function SuccessStoriesPage() {
             Ready to Begin Your Overseas Academic Journey?
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
-            Our team in Urban Estate Phase II, Patiala is ready to evaluate your qualifications and help you make an informed decision.
+            Our team Opposite Punjabi University, Patiala is ready to evaluate your qualifications and help you make an informed decision.
           </p>
           <div>
             <Link

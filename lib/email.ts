@@ -67,7 +67,7 @@ export async function sendLeadNotifications(lead: Lead) {
       </div>
       <p style="font-size: 13px; color: #64748b;">
         AKME Immigrations & Education<br/>
-        SCO 37 & 38, near Vardhman Hospital, Urban Estate Phase II, Rajpura Road, Patiala, Punjab 147002
+        Opposite Punjabi University, Patiala, Punjab, India
       </p>
     </div>
   `;
