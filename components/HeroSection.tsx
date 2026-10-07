@@ -31,7 +31,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[92vh] sm:min-h-[88vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
+    <section className="relative min-h-[84vh] sm:min-h-[80vh] lg:min-h-[76vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
       
       {/* 1. FULLSCREEN BACKGROUND VIDEO */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
@@ -65,64 +65,57 @@ export default function HeroSection() {
       </button>
 
       {/* 2. MAIN HERO CONTENT */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Headlines & Pillars */}
-          <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
+          <div className="lg:col-span-7 space-y-4 text-left">
             
-            {/* Prominent New Centre Location Badge */}
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-red-600/20 backdrop-blur-md border border-red-500/40 text-red-200 text-[11px] sm:text-xs font-bold shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-ping flex-shrink-0" />
-              <MapPin className="w-3.5 h-3.5 text-brand-gold flex-shrink-0" />
-              <span className="truncate">SCO 31, Opp. Punjab &amp; Sind Bank, Walia Enclave, Opp. Punjabi University, Patiala</span>
-            </div>
-
             {/* Primary Brand & Positioning Headlines */}
-            <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-1.5">
               <div className="text-xs sm:text-sm font-extrabold tracking-wider text-brand-gold uppercase flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" />
                 AKME Immigrations &amp; Education
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12] font-heading drop-shadow-sm">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.14] font-heading drop-shadow-sm">
                 Patiala's Trusted <span className="text-brand-red">Immigration &amp; Education</span> Institute
               </h1>
             </div>
 
             {/* Supporting Headline */}
-            <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl leading-relaxed drop-shadow-sm">
+            <p className="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed drop-shadow-sm">
               Study Abroad, Immigration, Test Preparation &amp; Foreign Language Training — All Under One Roof. Transparent, profile-based counselling with zero false commitments.
             </p>
 
             {/* 4 Pillars Glass Cards (Responsive Grid: 2 cols on mobile, 4 on tablet/desktop) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-1 max-w-2xl">
-              <div className="p-3 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
-                <GraduationCap className="w-5 h-5 text-brand-gold mx-auto mb-1.5" />
-                <span className="text-xs sm:text-sm font-bold text-white block leading-tight">Study Abroad</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-0.5 max-w-2xl">
+              <div className="p-2.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
+                <GraduationCap className="w-4 h-4 text-brand-gold mx-auto mb-1" />
+                <span className="text-xs font-bold text-white block leading-tight">Study Abroad</span>
                 <span className="text-[10px] text-slate-300 hidden sm:block mt-0.5">8 Global Hubs</span>
               </div>
-              <div className="p-3 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
-                <FileCheck2 className="w-5 h-5 text-brand-gold mx-auto mb-1.5" />
-                <span className="text-xs sm:text-sm font-bold text-white block leading-tight">Immigration</span>
+              <div className="p-2.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
+                <FileCheck2 className="w-4 h-4 text-brand-gold mx-auto mb-1" />
+                <span className="text-xs font-bold text-white block leading-tight">Immigration</span>
                 <span className="text-[10px] text-slate-300 hidden sm:block mt-0.5">PR, PNP &amp; Visitor</span>
               </div>
-              <div className="p-3 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
-                <BookOpen className="w-5 h-5 text-brand-gold mx-auto mb-1.5" />
-                <span className="text-xs sm:text-sm font-bold text-white block leading-tight">IELTS / PTE</span>
+              <div className="p-2.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
+                <BookOpen className="w-4 h-4 text-brand-gold mx-auto mb-1" />
+                <span className="text-xs font-bold text-white block leading-tight">IELTS / PTE</span>
                 <span className="text-[10px] text-slate-300 hidden sm:block mt-0.5">Lab Coaching</span>
               </div>
-              <div className="p-3 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
-                <Languages className="w-5 h-5 text-brand-gold mx-auto mb-1.5" />
-                <span className="text-xs sm:text-sm font-bold text-white block leading-tight">French / German</span>
+              <div className="p-2.5 rounded-xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
+                <Languages className="w-4 h-4 text-brand-gold mx-auto mb-1" />
+                <span className="text-xs font-bold text-white block leading-tight">French / German</span>
                 <span className="text-[10px] text-slate-300 hidden sm:block mt-0.5">A1-B2 &amp; Spoken</span>
               </div>
             </div>
 
             {/* Action Buttons: Primary, Secondary, Additional */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-1">
               <Link
                 href="/profile-assessment"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-xl text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark shadow-xl hover:shadow-red-900/40 transition-all text-center"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark shadow-xl hover:shadow-red-900/40 transition-all text-center"
               >
                 <span>Profile Assessment</span>
                 <ArrowRight className="w-4 h-4" />
@@ -130,7 +123,7 @@ export default function HeroSection() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-xl text-sm font-bold text-white bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/20 shadow-md transition-colors text-center"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/20 shadow-md transition-colors text-center"
               >
                 <MapPin className="w-4 h-4 text-brand-gold" />
                 <span>Visit Our Centre</span>
@@ -138,7 +131,7 @@ export default function HeroSection() {
 
               <a
                 href={`tel:${SITE_CONFIG.phoneRaw}`}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 sm:py-4 rounded-xl text-sm font-semibold text-slate-300 hover:text-white transition-colors text-center"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-slate-300 hover:text-white transition-colors text-center"
               >
                 <Phone className="w-4 h-4 text-brand-gold" />
                 <span>Talk to an Expert</span>
