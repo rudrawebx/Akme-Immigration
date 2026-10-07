@@ -151,41 +151,22 @@ export default function Header() {
               </button>
 
               {openDropdown === 'study-abroad' && (
-                <div className="absolute top-full -left-10 w-[540px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                      <GraduationCap className="w-4 h-4 text-brand-red" />
-                      Popular Study Destinations
-                    </span>
-                    <Link href="/study-abroad" className="text-xs font-bold text-brand-red hover:underline flex items-center gap-1">
-                      <span>Study Abroad Hub</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
+                <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-xl border border-slate-200/80 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="px-2.5 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Top Study Hubs</span>
+                    <Link href="/study-abroad" className="text-xs font-bold text-brand-red hover:underline">All Hubs →</Link>
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-1">
                     {STUDY_ABROAD_COUNTRIES.map((c) => (
                       <Link
                         key={c.slug}
                         href={`/countries/${c.slug}`}
-                        className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group border border-transparent hover:border-slate-200/60"
+                        className="flex items-center gap-2 px-2.5 py-2 rounded-xl hover:bg-red-50/60 hover:text-brand-red transition-colors group"
                       >
-                        <span className="text-2xl flex-shrink-0">{c.flag}</span>
-                        <div>
-                          <div className="text-sm font-bold text-slate-900 group-hover:text-brand-red transition-colors">
-                            {c.name}
-                          </div>
-                          <div className="text-[11px] text-slate-500 line-clamp-1">
-                            {c.tagline}
-                          </div>
-                        </div>
+                        <span className="text-lg flex-shrink-0">{c.flag}</span>
+                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red">{c.name}</span>
                       </Link>
                     ))}
-                  </div>
-                  <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between bg-slate-50 p-2.5 rounded-xl">
-                    <span className="text-xs text-slate-600 font-medium">Looking for course shortlisting or intake guidelines?</span>
-                    <Link href="/profile-assessment" className="text-xs font-bold text-white bg-brand-red hover:bg-brand-redDark px-3 py-1.5 rounded-lg">
-                      Free Assessment →
-                    </Link>
                   </div>
                 </div>
               )}
@@ -210,33 +191,20 @@ export default function Header() {
               </button>
 
               {openDropdown === 'immigration' && (
-                <div className="absolute top-full -left-20 w-[480px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                      <FileCheck2 className="w-4 h-4 text-brand-red" />
-                      Immigration & Visa Pathways
-                    </span>
-                    <Link href="/immigration" className="text-xs font-bold text-brand-red hover:underline flex items-center gap-1">
-                      <span>View All Pathways</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
+                <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-xl border border-slate-200/80 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="px-2.5 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Key Pathways</span>
+                    <Link href="/immigration" className="text-xs font-bold text-brand-red hover:underline">Overview →</Link>
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="space-y-0.5">
                     {IMMIGRATION_SERVICES.map((s) => (
                       <Link
                         key={s.slug}
                         href={s.href}
-                        className="p-2.5 rounded-xl hover:bg-slate-50 transition-colors group border border-transparent hover:border-slate-200/60 block"
+                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-red-50/60 hover:text-brand-red transition-colors group"
                       >
-                        <div className="text-xs font-bold uppercase tracking-wider text-brand-red mb-0.5">
-                          {s.badge}
-                        </div>
-                        <div className="text-sm font-bold text-slate-900 group-hover:text-brand-red transition-colors">
-                          {s.title}
-                        </div>
-                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
-                          {s.shortDesc}
-                        </div>
+                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red">{s.title}</span>
+                        <span className="text-[10px] font-bold text-brand-red/90 bg-red-50 px-2 py-0.5 rounded-md">{s.badge}</span>
                       </Link>
                     ))}
                   </div>
@@ -263,33 +231,20 @@ export default function Header() {
               </button>
 
               {openDropdown === 'test-prep' && (
-                <div className="absolute top-full -left-20 w-[460px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                      <BookOpen className="w-4 h-4 text-brand-red" />
-                      In-House Academy & Labs
-                    </span>
-                    <Link href="/test-preparation" className="text-xs font-bold text-brand-red hover:underline flex items-center gap-1">
-                      <span>All Tests</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
+                <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-xl border border-slate-200/80 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="px-2.5 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Lab Coaching & Exams</span>
+                    <Link href="/test-preparation" className="text-xs font-bold text-brand-red hover:underline">All Tests →</Link>
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="space-y-0.5">
                     {TEST_PREPARATION_COURSES.map((t) => (
                       <Link
                         key={t.slug}
                         href={t.href}
-                        className="p-2.5 rounded-xl hover:bg-slate-50 transition-colors group border border-transparent hover:border-slate-200/60 block"
+                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-red-50/60 hover:text-brand-red transition-colors group"
                       >
-                        <div className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-0.5">
-                          {t.badge}
-                        </div>
-                        <div className="text-sm font-bold text-slate-900 group-hover:text-brand-red transition-colors">
-                          {t.title}
-                        </div>
-                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
-                          {t.shortDesc}
-                        </div>
+                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red">{t.title}</span>
+                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">{t.badge}</span>
                       </Link>
                     ))}
                   </div>
@@ -316,35 +271,20 @@ export default function Header() {
               </button>
 
               {openDropdown === 'languages' && (
-                <div className="absolute top-full -left-10 w-[380px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                      <Languages className="w-4 h-4 text-brand-red" />
-                      Foreign Language Batches
-                    </span>
-                    <Link href="/languages" className="text-xs font-bold text-brand-red hover:underline flex items-center gap-1">
-                      <span>View Courses</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
+                <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-xl border border-slate-200/80 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="px-2.5 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Foreign Languages</span>
+                    <Link href="/languages" className="text-xs font-bold text-brand-red hover:underline">All Levels →</Link>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-0.5">
                     {LANGUAGE_COURSES.map((l) => (
                       <Link
                         key={l.slug}
                         href={l.href}
-                        className="p-2.5 rounded-xl hover:bg-slate-50 transition-colors group border border-transparent hover:border-slate-200/60 block"
+                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-red-50/60 hover:text-brand-red transition-colors group"
                       >
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm font-bold text-slate-900 group-hover:text-brand-red transition-colors">
-                            {l.title}
-                          </span>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-brand-red bg-red-50 px-2 py-0.5 rounded-full">
-                            {l.levels}
-                          </span>
-                        </div>
-                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-1">
-                          {l.shortDesc}
-                        </div>
+                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red">{l.title}</span>
+                        <span className="text-[10px] font-bold text-brand-red bg-red-50 px-2 py-0.5 rounded-md">{l.levels}</span>
                       </Link>
                     ))}
                   </div>
