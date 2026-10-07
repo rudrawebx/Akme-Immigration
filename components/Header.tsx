@@ -361,20 +361,6 @@ export default function Header() {
             </div>
 
             <Link 
-              href="/success-stories" 
-              className={`px-3 py-2 rounded-lg transition-colors ${pathname === '/success-stories' ? 'text-brand-red bg-red-50/70 font-bold' : 'hover:text-brand-red hover:bg-slate-50'}`}
-            >
-              Success Stories
-            </Link>
-
-            <Link 
-              href="/blog" 
-              className={`px-3 py-2 rounded-lg transition-colors ${pathname === '/blog' ? 'text-brand-red bg-red-50/70 font-bold' : 'hover:text-brand-red hover:bg-slate-50'}`}
-            >
-              Visa Updates
-            </Link>
-
-            <Link 
               href="/contact" 
               className={`px-3 py-2 rounded-lg transition-colors ${pathname === '/contact' ? 'text-brand-red bg-red-50/70 font-bold' : 'hover:text-brand-red hover:bg-slate-50'}`}
             >
@@ -390,7 +376,7 @@ export default function Header() {
               onClick={handleCtaClick}
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 xl:px-6 xl:py-3 text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark rounded-xl shadow-md hover:shadow-lg transition-all whitespace-nowrap"
             >
-              <span>Free Profile Assessment</span>
+              <span>Profile Assessment</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -557,12 +543,6 @@ export default function Header() {
               )}
             </div>
 
-            <Link href="/success-stories" className="px-3 py-2.5 rounded-lg hover:bg-slate-50 transition-colors">
-              Success Stories
-            </Link>
-            <Link href="/blog" className="px-3 py-2.5 rounded-lg hover:bg-slate-50 transition-colors">
-              Visa Updates
-            </Link>
             <Link href="/contact" className="px-3 py-2.5 rounded-lg hover:bg-slate-50 transition-colors">
               Contact Centre
             </Link>
@@ -579,7 +559,7 @@ export default function Header() {
               onClick={handleCtaClick}
               className="w-full flex items-center justify-center gap-2 py-3.5 px-4 text-center font-bold text-white bg-brand-red hover:bg-brand-redDark rounded-xl shadow transition-colors"
             >
-              <span>Get Free Profile Assessment</span>
+              <span>Profile Assessment</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <div className="grid grid-cols-2 gap-2">
