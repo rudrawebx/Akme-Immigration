@@ -151,20 +151,20 @@ export default function Header() {
               </button>
 
               {openDropdown === 'study-abroad' && (
-                <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-xl border border-slate-200/80 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="px-2.5 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100">
+                <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3.5 z-50 animate-dropdown-box">
+                  <div className="px-3 py-1.5 mb-2 flex items-center justify-between border-b border-slate-100">
                     <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Top Study Hubs</span>
                     <Link href="/study-abroad" className="text-xs font-bold text-brand-red hover:underline">All Hubs →</Link>
                   </div>
-                  <div className="grid grid-cols-2 gap-1">
+                  <div className="grid grid-cols-2 gap-1.5">
                     {STUDY_ABROAD_COUNTRIES.map((c) => (
                       <Link
                         key={c.slug}
                         href={`/countries/${c.slug}`}
-                        className="flex items-center gap-2 px-2.5 py-2 rounded-xl hover:bg-red-50/60 hover:text-brand-red transition-colors group"
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-transparent hover:border-red-100 hover:bg-red-50/70 hover:shadow-xs transition-all group duration-150"
                       >
-                        <span className="text-lg flex-shrink-0">{c.flag}</span>
-                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red">{c.name}</span>
+                        <span className="text-lg flex-shrink-0 group-hover:scale-110 transition-transform">{c.flag}</span>
+                        <span className="text-xs font-bold text-slate-800 group-hover:text-brand-red transition-colors">{c.name}</span>
                       </Link>
                     ))}
                   </div>
@@ -172,7 +172,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* 2. IMMIGRATION DROPDOWN */}
+            {/* 2. IMMIGRATION DROPDOWN (BOX TYPE ANIMATED) */}
             <div 
               className="relative"
               onMouseEnter={() => setOpenDropdown('immigration')}
@@ -191,20 +191,27 @@ export default function Header() {
               </button>
 
               {openDropdown === 'immigration' && (
-                <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-xl border border-slate-200/80 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="px-2.5 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Key Pathways</span>
+                <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3.5 z-50 animate-dropdown-box">
+                  <div className="px-3 py-1.5 mb-2 flex items-center justify-between border-b border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Immigration Services</span>
                     <Link href="/immigration" className="text-xs font-bold text-brand-red hover:underline">Overview →</Link>
                   </div>
-                  <div className="space-y-0.5">
-                    {IMMIGRATION_SERVICES.map((s) => (
+                  <div className="space-y-1">
+                    {[
+                      { title: "Permanent Residency (PR)", href: "/immigration/pr", badge: "Direct PR" },
+                      { title: "Provincial Nominee Programs (PNP)", href: "/immigration/pnp", badge: "Provincial" },
+                      { title: "Visitor & Tourist Visa", href: "/visitor-visa", badge: "Tourism" },
+                      { title: "Australia Immigration", href: "/immigration/australia", badge: "Points Test" },
+                      { title: "Canada Immigration", href: "/immigration/canada", badge: "Express Entry" },
+                      { title: "Visa Refusal Case Assessment", href: "/immigration/refused-cases", badge: "Analysis" },
+                    ].map((s) => (
                       <Link
-                        key={s.slug}
+                        key={s.href}
                         href={s.href}
-                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-red-50/60 hover:text-brand-red transition-colors group"
+                        className="flex items-center justify-between px-3 py-2 rounded-xl border border-transparent hover:border-red-100 hover:bg-red-50/70 hover:shadow-xs transition-all group duration-150"
                       >
-                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red">{s.title}</span>
-                        <span className="text-[10px] font-bold text-brand-red/90 bg-red-50 px-2 py-0.5 rounded-md">{s.badge}</span>
+                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red transition-colors">{s.title}</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-red group-hover:translate-x-0.5 transition-all" />
                       </Link>
                     ))}
                   </div>
@@ -212,7 +219,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* 3. TEST PREPARATION DROPDOWN */}
+            {/* 3. TEST PREPARATION DROPDOWN (BOX TYPE ANIMATED) */}
             <div 
               className="relative"
               onMouseEnter={() => setOpenDropdown('test-prep')}
@@ -231,20 +238,27 @@ export default function Header() {
               </button>
 
               {openDropdown === 'test-prep' && (
-                <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-xl border border-slate-200/80 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="px-2.5 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Lab Coaching & Exams</span>
+                <div className="absolute top-full left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3.5 z-50 animate-dropdown-box">
+                  <div className="px-3 py-1.5 mb-2 flex items-center justify-between border-b border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Test Preparation</span>
                     <Link href="/test-preparation" className="text-xs font-bold text-brand-red hover:underline">All Tests →</Link>
                   </div>
-                  <div className="space-y-0.5">
-                    {TEST_PREPARATION_COURSES.map((t) => (
+                  <div className="space-y-1">
+                    {[
+                      { title: "IELTS Coaching", href: "/ielts", badge: "IDP Certified" },
+                      { title: "PTE Academic Prep", href: "/pte", badge: "AI Lab" },
+                      { title: "CELPIP Training", href: "/test-preparation/celpip", badge: "Canada PR" },
+                      { title: "CAEL Preparation", href: "/test-preparation/cael", badge: "Academic" },
+                      { title: "GRE Coaching", href: "/test-preparation/gre", badge: "Grad School" },
+                      { title: "Duolingo English Test (DET)", href: "/test-preparation/duolingo", badge: "Fast Results" },
+                    ].map((t) => (
                       <Link
-                        key={t.slug}
+                        key={t.href}
                         href={t.href}
-                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-red-50/60 hover:text-brand-red transition-colors group"
+                        className="flex items-center justify-between px-3 py-2 rounded-xl border border-transparent hover:border-red-100 hover:bg-red-50/70 hover:shadow-xs transition-all group duration-150"
                       >
-                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red">{t.title}</span>
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">{t.badge}</span>
+                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red transition-colors">{t.title}</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-red group-hover:translate-x-0.5 transition-all" />
                       </Link>
                     ))}
                   </div>
@@ -252,7 +266,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* 4. LANGUAGES DROPDOWN */}
+            {/* 4. LANGUAGES DROPDOWN (BOX TYPE ANIMATED WITH LEVEL PILLS) */}
             <div 
               className="relative"
               onMouseEnter={() => setOpenDropdown('languages')}
@@ -271,20 +285,29 @@ export default function Header() {
               </button>
 
               {openDropdown === 'languages' && (
-                <div className="absolute top-full left-0 w-72 bg-white rounded-2xl shadow-xl border border-slate-200/80 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="px-2.5 py-1.5 mb-1.5 flex items-center justify-between border-b border-slate-100">
+                <div className="absolute top-full left-0 w-84 bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3.5 z-50 animate-dropdown-box">
+                  <div className="px-3 py-1.5 mb-2 flex items-center justify-between border-b border-slate-100">
                     <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Foreign Languages</span>
-                    <Link href="/languages" className="text-xs font-bold text-brand-red hover:underline">All Levels →</Link>
+                    <Link href="/languages" className="text-xs font-bold text-brand-red hover:underline">All Courses →</Link>
                   </div>
-                  <div className="space-y-0.5">
-                    {LANGUAGE_COURSES.map((l) => (
+                  <div className="space-y-1.5">
+                    {[
+                      { title: "French Language Training", href: "/languages/french", levels: "A1 • A2 • B1 • B2" },
+                      { title: "German Language Training", href: "/languages/german", levels: "A1 • A2 • B1 • B2" },
+                      { title: "Spoken English & Personality", href: "/languages/spoken-english", levels: "Basic to Advanced" },
+                    ].map((l) => (
                       <Link
-                        key={l.slug}
+                        key={l.href}
                         href={l.href}
-                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-red-50/60 hover:text-brand-red transition-colors group"
+                        className="flex items-center justify-between px-3 py-2.5 rounded-xl border border-transparent hover:border-red-100 hover:bg-red-50/70 hover:shadow-xs transition-all group duration-150"
                       >
-                        <span className="text-xs font-semibold text-slate-800 group-hover:text-brand-red">{l.title}</span>
-                        <span className="text-[10px] font-bold text-brand-red bg-red-50 px-2 py-0.5 rounded-md">{l.levels}</span>
+                        <div>
+                          <div className="text-xs font-bold text-slate-900 group-hover:text-brand-red transition-colors">{l.title}</div>
+                          <div className="text-[10px] text-brand-red font-medium mt-0.5">{l.levels}</div>
+                        </div>
+                        <span className="text-[10px] font-bold text-slate-400 group-hover:text-brand-red px-2 py-0.5 rounded-md bg-slate-100 group-hover:bg-white transition-colors">
+                          Join →
+                        </span>
                       </Link>
                     ))}
                   </div>
