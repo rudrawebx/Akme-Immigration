@@ -19,14 +19,16 @@ interface AssessmentFormProps {
   title?: string;
   subtitle?: string;
   compact?: boolean;
+  hideHeader?: boolean;
 }
 
 export default function AssessmentForm({
   defaultCountry = '',
   defaultService = '',
-  title = "Free Profile Assessment",
+  title = "Profile Assessment",
   subtitle = "Find out your eligibility for Study Visa, Immigration / PR, or Foreign Language Training.",
   compact = false,
+  hideHeader = false,
 }: AssessmentFormProps) {
   const [formData, setFormData] = useState({
     name: '',
@@ -195,15 +197,17 @@ export default function AssessmentForm({
   }
 
   return (
-    <div className={`bg-white rounded-2xl border border-slate-200 shadow-xl ${compact ? 'p-6' : 'p-6 sm:p-8 lg:p-10'}`}>
-      <div className="mb-6">
-        <div className="flex items-center gap-2 text-brand-red font-semibold text-xs tracking-wider uppercase mb-1">
-          <Sparkles className="w-4 h-4 text-brand-gold" />
-          <span>Quick & Confidential Eligibility Check</span>
+    <div className={`bg-white rounded-2xl ${hideHeader ? 'border-0 shadow-none p-0' : `border border-slate-200 shadow-xl ${compact ? 'p-6' : 'p-6 sm:p-8 lg:p-10'}`}`}>
+      {!hideHeader && (
+        <div className="mb-6">
+          <div className="flex items-center gap-2 text-brand-red font-semibold text-xs tracking-wider uppercase mb-1">
+            <Sparkles className="w-4 h-4 text-brand-gold" />
+            <span>Quick & Confidential Eligibility Check</span>
+          </div>
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900">{title}</h3>
+          <p className="text-xs sm:text-sm text-slate-600 mt-1">{subtitle}</p>
         </div>
-        <h3 className="text-xl sm:text-2xl font-bold text-slate-900">{title}</h3>
-        <p className="text-xs sm:text-sm text-slate-600 mt-1">{subtitle}</p>
-      </div>
+      )}
 
       {errorMessage && (
         <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs sm:text-sm text-red-700 flex items-start gap-2.5">

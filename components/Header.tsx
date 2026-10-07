@@ -77,7 +77,7 @@ export default function Header() {
             </span>
           </div>
 
-          {/* Quick Help & Payment Links */}
+          {/* Quick Contact & Hours */}
           <div className="flex items-center gap-4 text-xs">
             <span className="hidden md:flex items-center gap-1.5 text-slate-600">
               <Clock className="w-3.5 h-3.5 text-brand-gold flex-shrink-0" />
@@ -92,14 +92,6 @@ export default function Header() {
               <Phone className="w-3.5 h-3.5 text-brand-red" />
               <span>{SITE_CONFIG.phoneDisplay}</span>
             </a>
-            <span className="text-slate-300">|</span>
-            <Link 
-              href="/payment" 
-              className="flex items-center gap-1.5 font-bold text-amber-800 hover:text-amber-900 transition-colors bg-amber-50 hover:bg-amber-100 px-2.5 py-0.5 rounded-md border border-amber-200"
-            >
-              <CreditCard className="w-3.5 h-3.5 text-amber-600" />
-              <span>Make a Payment</span>
-            </Link>
           </div>
 
         </div>
@@ -545,10 +537,6 @@ export default function Header() {
 
             <Link href="/contact" className="px-3 py-2.5 rounded-lg hover:bg-slate-50 transition-colors">
               Contact Centre
-            </Link>
-            <Link href="/payment" className="px-3 py-2.5 rounded-lg hover:bg-slate-50 transition-colors text-amber-800 font-semibold flex items-center gap-2">
-              <CreditCard className="w-4 h-4 text-amber-600" />
-              Make a Payment
             </Link>
           </div>
 

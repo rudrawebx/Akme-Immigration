@@ -3,26 +3,23 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { 
-  Sparkles, 
   ArrowRight, 
-  MessageCircle, 
   Phone, 
   CheckCircle2, 
-  Play, 
-  FileText, 
   Volume2, 
   VolumeX,
   MapPin,
   GraduationCap,
   FileCheck2,
   BookOpen,
-  Languages
+  Languages,
+  Sparkles
 } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/config';
 import AssessmentForm from '@/components/AssessmentForm';
 
 export default function HeroSection() {
-  const [activeTab, setActiveTab] = useState<'video' | 'form'>('video');
+  const [showAssessmentModal, setShowAssessmentModal] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -33,215 +30,162 @@ export default function HeroSection() {
     }
   };
 
-  const switchToForm = () => {
-    setActiveTab('form');
-  };
-
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 text-slate-900 pt-8 pb-14 lg:pt-12 lg:pb-18 border-b border-slate-200">
+    <section className="relative min-h-[92vh] sm:min-h-[88vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
       
-      {/* Subtle decorative background glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-red-100/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-80 h-80 bg-slate-200/50 rounded-full blur-3xl pointer-events-none" />
+      {/* 1. FULLSCREEN BACKGROUND VIDEO */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
+          poster="/images/hero-video-poster.png"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-[1.03]"
+        >
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Cinematic Dual Gradient Overlay for 100% Readable Text on any screen */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/60 lg:to-slate-950/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/70" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Floating Sound Toggle Button */}
+      <button
+        type="button"
+        onClick={toggleSound}
+        className="absolute bottom-5 right-5 z-20 bg-black/60 hover:bg-black/90 text-white p-2.5 rounded-full backdrop-blur-md border border-white/20 transition-all shadow-lg text-xs flex items-center gap-2 group"
+        title={isMuted ? 'Turn Sound On' : 'Turn Sound Off'}
+      >
+        {isMuted ? <VolumeX className="w-4 h-4 text-slate-300 group-hover:text-white" /> : <Volume2 className="w-4 h-4 text-brand-gold animate-pulse" />}
+        <span className="hidden sm:inline text-[11px] font-medium pr-1 text-slate-200">
+          {isMuted ? 'Unmute Video' : 'Mute Video'}
+        </span>
+      </button>
+
+      {/* 2. MAIN HERO CONTENT */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Headlines & CTAs */}
-          <div className="lg:col-span-6 space-y-5">
+          {/* Left Column: Headlines & Pillars */}
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
             
             {/* Prominent New Centre Location Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-brand-red text-xs font-bold shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
-              <MapPin className="w-3.5 h-3.5 text-brand-red flex-shrink-0" />
-              <span>SCO 31, Opp. Punjab &amp; Sind Bank, Walia Enclave, Opp. Punjabi University, Patiala</span>
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-red-600/20 backdrop-blur-md border border-red-500/40 text-red-200 text-[11px] sm:text-xs font-bold shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-ping flex-shrink-0" />
+              <MapPin className="w-3.5 h-3.5 text-brand-gold flex-shrink-0" />
+              <span className="truncate">SCO 31, Opp. Punjab &amp; Sind Bank, Walia Enclave, Opp. Punjabi University, Patiala</span>
             </div>
 
             {/* Primary Brand & Positioning Headlines */}
-            <div className="space-y-2">
-              <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-500">
-                AKME Immigrations & Education
+            <div className="space-y-2 sm:space-y-3">
+              <div className="text-xs sm:text-sm font-extrabold tracking-wider text-brand-gold uppercase flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5" />
+                AKME Immigrations &amp; Education
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.15] font-heading">
-                Patiala's Trusted <span className="text-brand-red">Immigration & Education</span> Institute
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12] font-heading drop-shadow-sm">
+                Patiala's Trusted <span className="text-brand-red">Immigration &amp; Education</span> Institute
               </h1>
             </div>
 
-            {/* Supporting Headline & 4 Core Pillars Strip */}
-            <p className="text-sm sm:text-base text-slate-600 max-w-xl leading-relaxed">
-              Study Abroad, Immigration, Test Preparation & Foreign Language Training — All Under One Roof. Transparent, profile-based counselling with zero false commitments.
+            {/* Supporting Headline */}
+            <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl leading-relaxed drop-shadow-sm">
+              Study Abroad, Immigration, Test Preparation &amp; Foreign Language Training — All Under One Roof. Transparent, profile-based counselling with zero false commitments.
             </p>
 
-            {/* 4 Pillars Highlight Pills */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-              <div className="p-2.5 rounded-xl bg-white border border-slate-200 shadow-xs text-center">
-                <GraduationCap className="w-4 h-4 text-brand-red mx-auto mb-1" />
-                <span className="text-xs font-bold text-slate-900 block leading-tight">Study Abroad</span>
+            {/* 4 Pillars Glass Cards (Responsive Grid: 2 cols on mobile, 4 on tablet/desktop) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-1 max-w-2xl">
+              <div className="p-3 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
+                <GraduationCap className="w-5 h-5 text-brand-gold mx-auto mb-1.5" />
+                <span className="text-xs sm:text-sm font-bold text-white block leading-tight">Study Abroad</span>
+                <span className="text-[10px] text-slate-300 hidden sm:block mt-0.5">8 Global Hubs</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-white border border-slate-200 shadow-xs text-center">
-                <FileCheck2 className="w-4 h-4 text-brand-red mx-auto mb-1" />
-                <span className="text-xs font-bold text-slate-900 block leading-tight">Immigration</span>
+              <div className="p-3 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
+                <FileCheck2 className="w-5 h-5 text-brand-gold mx-auto mb-1.5" />
+                <span className="text-xs sm:text-sm font-bold text-white block leading-tight">Immigration</span>
+                <span className="text-[10px] text-slate-300 hidden sm:block mt-0.5">PR, PNP &amp; Visitor</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-white border border-slate-200 shadow-xs text-center">
-                <BookOpen className="w-4 h-4 text-brand-red mx-auto mb-1" />
-                <span className="text-xs font-bold text-slate-900 block leading-tight">IELTS / PTE</span>
+              <div className="p-3 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
+                <BookOpen className="w-5 h-5 text-brand-gold mx-auto mb-1.5" />
+                <span className="text-xs sm:text-sm font-bold text-white block leading-tight">IELTS / PTE</span>
+                <span className="text-[10px] text-slate-300 hidden sm:block mt-0.5">Lab Coaching</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-white border border-slate-200 shadow-xs text-center">
-                <Languages className="w-4 h-4 text-brand-red mx-auto mb-1" />
-                <span className="text-xs font-bold text-slate-900 block leading-tight">French / German</span>
+              <div className="p-3 rounded-2xl bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/15 text-center transition-colors">
+                <Languages className="w-5 h-5 text-brand-gold mx-auto mb-1.5" />
+                <span className="text-xs sm:text-sm font-bold text-white block leading-tight">French / German</span>
+                <span className="text-[10px] text-slate-300 hidden sm:block mt-0.5">A1-B2 &amp; Spoken</span>
               </div>
             </div>
 
             {/* Action Buttons: Primary, Secondary, Additional */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-              <button
-                type="button"
-                onClick={switchToForm}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark shadow-md hover:shadow-lg transition-all"
+              <Link
+                href="/profile-assessment"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-xl text-sm font-bold text-white bg-brand-red hover:bg-brand-redDark shadow-xl hover:shadow-red-900/40 transition-all text-center"
               >
-                <span>Get Free Profile Assessment</span>
+                <span>Profile Assessment</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-sm font-bold text-slate-800 hover:text-brand-red bg-white hover:bg-slate-50 border border-slate-200 shadow-xs transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-xl text-sm font-bold text-white bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/20 shadow-md transition-colors text-center"
               >
-                <MapPin className="w-4 h-4 text-brand-red" />
+                <MapPin className="w-4 h-4 text-brand-gold" />
                 <span>Visit Our Centre</span>
               </Link>
 
               <a
                 href={`tel:${SITE_CONFIG.phoneRaw}`}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 sm:py-4 rounded-xl text-sm font-semibold text-slate-300 hover:text-white transition-colors text-center"
               >
-                <Phone className="w-4 h-4 text-slate-500" />
+                <Phone className="w-4 h-4 text-brand-gold" />
                 <span>Talk to an Expert</span>
               </a>
             </div>
 
-            {/* Quick Trust Highlights */}
-            <div className="pt-4 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-semibold text-slate-700">
+            {/* Trust Highlights */}
+            <div className="pt-4 border-t border-white/15 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-medium text-slate-300">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span>Opposite Punjabi University</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span>Profile-Based Guidance</span>
               </div>
               <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span>Transparent Process</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Video Showcase & Assessment Form Tabs */}
-          <div className="lg:col-span-6" id="assessment">
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
-              
-              {/* Tab Selector Header */}
-              <div className="flex items-center border-b border-slate-200 bg-slate-50/80 p-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('video')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                    activeTab === 'video'
-                      ? 'bg-white text-slate-900 shadow-xs border border-slate-200/80'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`}
-                >
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <Play className="w-3.5 h-3.5 fill-brand-red text-brand-red" />
-                  <span>Campus Life Video</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('form')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                    activeTab === 'form'
-                      ? 'bg-white text-slate-900 shadow-xs border border-slate-200/80'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`}
-                >
-                  <FileText className="w-3.5 h-3.5 text-brand-red" />
-                  <span>Free Assessment Form</span>
-                </button>
+          {/* Right Column: Instant Assessment Glass Card */}
+          <div className="lg:col-span-5" id="assessment">
+            <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-5 sm:p-7 shadow-2xl border border-white/40 text-slate-900">
+              <div className="mb-4 pb-3 border-b border-slate-100 flex items-center justify-between">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-brand-red block">Free Evaluation</span>
+                  <h3 className="text-lg sm:text-xl font-bold font-heading text-slate-900">Instant Profile Assessment</h3>
+                </div>
+                <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200/60 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Fast Review
+                </span>
               </div>
-
-              {/* Tab Content 1: Video Player */}
-              {activeTab === 'video' && (
-                <div className="p-4 sm:p-5 space-y-3">
-                  <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 aspect-video bg-slate-900">
-                    <video
-                      ref={videoRef}
-                      autoPlay
-                      loop
-                      muted={isMuted}
-                      playsInline
-                      controls
-                      poster="/images/hero-video-poster.png"
-                      className="w-full h-full object-cover"
-                    >
-                      <source src="/videos/hero-video.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-
-                    {/* Floating Overlay Badge */}
-                    <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-slate-800 shadow-xs flex items-center gap-2 border border-slate-200/60 pointer-events-none">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      <span>Study Abroad & Campus Life</span>
-                    </div>
-
-                    {/* Quick Sound Toggle Button */}
-                    <button
-                      type="button"
-                      onClick={toggleSound}
-                      className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors text-xs flex items-center gap-1.5"
-                      title={isMuted ? 'Unmute' : 'Mute'}
-                    >
-                      {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                    </button>
-                  </div>
-
-                  {/* Video Caption & Quick Assessment CTA */}
-                  <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-xs sm:text-sm">Patiala to Global Universities</h4>
-                      <p className="text-[11px] text-slate-600 mt-0.5">Guidance for Canada, UK, Australia, Germany, France, USA & Ireland.</p>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={switchToForm}
-                      className="px-4 py-2 bg-brand-red hover:bg-brand-redDark text-white font-bold text-xs rounded-xl shadow transition-colors inline-flex items-center gap-1.5 flex-shrink-0"
-                    >
-                      <span>Check Eligibility</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* Tab Content 2: Assessment Form */}
-              {activeTab === 'form' && (
-                <div className="p-2 sm:p-4">
-                  <AssessmentForm 
-                    compact 
-                    title="Get Free Profile Assessment" 
-                    subtitle="Share your profile details for an honest evaluation from senior counsellors in Patiala."
-                  />
-                </div>
-              )}
-
+              <AssessmentForm 
+                compact 
+                hideHeader 
+              />
             </div>
           </div>
 
         </div>
       </div>
+
     </section>
   );
 }

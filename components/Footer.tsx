@@ -60,7 +60,7 @@ export default function Footer() {
           
           {/* Col 1 & 2: Brand Info & Exact Location */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block bg-white p-2.5 rounded-2xl border border-slate-200 shadow-xs">
+            <Link href="/" className="inline-block py-1">
               <div className="relative h-12 w-48">
                 <Image 
                   src="/images/akme-logo.png" 
